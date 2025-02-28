@@ -111,7 +111,11 @@
           <p>Reps (default): {{ .Reps }}</p>
         </div>
         <div class="col">
+          {{ if hasSuffix .Image ".mp4" }}
+          <video src="{{ .Image }}" style="max-width: 100%;max-height: 100%;" controls></video>
+          {{ else }}
           <img src="{{ .Image }}" style="max-width: 100%;max-height: 100%;" alt="Exercise Image"></img>
+          {{ end }}
         </div>
       </div>
     </div>

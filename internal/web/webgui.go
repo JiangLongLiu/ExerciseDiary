@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 
@@ -41,7 +42,9 @@ func Gui(dirPath, nodePath string) {
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
 
-	templ := template.Must(template.New("").ParseFS(templFS, "templates/*"))
+	templ := template.Must(template.New("").Funcs(template.FuncMap{
+		"hasSuffix": strings.HasSuffix,
+	}).ParseFS(templFS, "templates/*"))
 	router.SetHTMLTemplate(templ) // templates
 
 	router.StaticFS("/fs/", http.FS(pubFS)) // public

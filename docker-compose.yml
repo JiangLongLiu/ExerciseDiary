@@ -1,15 +1,14 @@
 version: "3"
 services:
   exdiary:
-    image: aceberg/exercisediary
+    image: liujl/exercisediary:0.1
+    container_name: exdiary
     restart: unless-stopped
     ports:
-    - 8851:8851
+      - 6638:8851
     volumes:
-    - ~/.dockerdata/ExerciseDiary:/data/ExerciseDiary
+      - ./data:/data/ExerciseDiary
     environment:
-      TZ: Asia/Novosibirsk    # required, default: ""
-      HOST: "0.0.0.0"         # optional, default: 0.0.0.0
-      PORT: "8851"            # optional, default: 8851
-      THEME: "grass"          # optional, default: grass
-      COLOR: "light"          # optional, default: light
+      - TZ=Asia/Shanghai
+      - AUTH=true
+      - AUTH_EXPIRE=10M
