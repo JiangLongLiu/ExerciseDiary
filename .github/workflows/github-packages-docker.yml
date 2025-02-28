@@ -49,5 +49,5 @@ jobs:
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           push: true
           tags: |
-            ghcr.io/aceberg/${{ env.IMAGE_NAME }}:latest
-            ghcr.io/aceberg/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+            ghcr.io/jianglongliu/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/jianglongliu/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
